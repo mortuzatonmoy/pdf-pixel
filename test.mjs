@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {parsePages,renderSize} from './dist/logic.mjs';
+test('page selection deduplicates and validates ranges',()=>{assert.deepEqual(parsePages('3-5,1,3',5),[1,3,4,5]);assert.deepEqual(parsePages('',2),[1,2]);for(const input of ['0','6','4-2','1,','abc','1-999999999'])assert.throws(()=>parsePages(input,5));});
+test('DPI converts PDF points to pixels and prevents oversized canvases',()=>{assert.deepEqual(renderSize({width:612,height:792},300),{width:2550,height:3300});assert.deepEqual(renderSize({width:612,height:792},600),{width:5100,height:6600});assert.throws(()=>renderSize({width:2000,height:2000},600));});

@@ -1,0 +1,1 @@
+{"name":"pdf-pixel","version":"1.0.0","private":true,"type":"module","scripts":{"build":"node build.mjs","start":"python -m http.server 4173 --directory dist"},"dependencies":{"pdfjs-dist":"5.4.624","fflate":"0.8.2"}}
